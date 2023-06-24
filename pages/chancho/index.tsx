@@ -3,19 +3,52 @@ import type { AccountInterface } from "starknet";
 import { connect } from "get-starknet";
 import { executeSwap, fetchQuotes, Quote } from "@avnu/avnu-sdk";
 import { formatUnits, parseUnits } from 'ethers';
+import { useEffect } from "react";
+import { useContract, useContractRead } from  '@starknet-react/core'
+import { vault_abi } from './vault';
 
 const AVNU_OPTIONS = { baseUrl: 'https://goerli.api.avnu.fi' };
 
 const ethAddress = "0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7"
 const usdcAddress = "0x005a643907b9a4bc6a55e9069c4fd5fd1f5c79a22470690f75556c4736e34426"
+const vaultAddress = "0x07ec2e7f4cea55320d16587c9e53e5be641eb4a150e9b0c477c6aa56be6f1217"
 
 function App() {
   const [ account, setAccount ] = useState<AccountInterface>()
-  const [ sellAmount, setSellAmount ] = useState<string>()
+  const [ amount, setAmount ] = useState<string>()
   const [ quotes, setQuotes ] = useState<Quote[]>([])
   const [ loading, setLoading ] = useState<boolean>(false)
   const [ errorMessage, setErrorMessage ] = useState<string>()
   const [ successMessage, setSuccessMessage ] = useState<string>()
+
+    // Inicializamos el contrato de stake
+    /*
+    const { contract: staking, isLoading: isStakingLoading } = useContract(
+        stakingContractAddress,
+        "custom"
+      );
+    */
+    const { contract } = useContract({
+        address: vaultAddress,
+        abi: vault_abi
+      })
+
+    // Tramos los balances de staking y reward token del contrato
+   /*
+   const { data: rewardTokenAddress } = useContractRead(staking, "rewardToken");
+   const { data: stakingTokenAddress } = useContractRead(
+     staking,
+     "stakingToken"
+   );
+
+   const { data, isLoading, error, refetch } = useContractRead({
+    address: ethAddress,
+    abi: compiledErc20.abi,
+    functionName: 'balanceOf',
+    args: [address],
+    watch: false
+  })
+*/
 
   const handleConnect = async () => {
     const starknet = await connect();
@@ -30,7 +63,7 @@ function App() {
     if (!account) return;
     setErrorMessage('')
     setQuotes([])
-    setSellAmount(event.target.value);
+    setAmount(event.target.value);
     setLoading(true)
     const params = {
       sellTokenAddress: ethAddress,
@@ -49,7 +82,7 @@ function App() {
   }
 
   const handleSwap = async () => {
-    if (!account || !sellAmount || !quotes || !quotes[0]) return;
+    if (!account || !amount || !quotes || !quotes[0]) return;
     setErrorMessage('')
     setSuccessMessage('')
     setLoading(true)
@@ -75,6 +108,7 @@ function App() {
         </a>
         <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">We invest in the LATAM&apos;s potential</h1>
         <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">The first Starknet protocol to save your crypto while investing in LATAM&apos;s startups.</p>
+        <span>{contract?.address}</span>
         <div className="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
  
             <button className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900" onClick={handleConnect}>Connect Wallet</button>

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@avnu/avnu-sdk": "^1.0.4",
+    "@starknet-react/core": "^0.18.0",
     "@types/node": "20.3.1",
     "@types/react": "18.2.13",
     "@types/react-dom": "18.2.6",
