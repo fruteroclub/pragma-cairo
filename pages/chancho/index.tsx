@@ -85,25 +85,52 @@ function App() {
   return (
     
     <div>
-      <div>
-        <h2>Sell Token</h2>
-        <h3>ETH</h3>
-        <input onChange={handleChangeInput} disabled={loading}/>
-      </div>
-      <div>&darr;</div>
-      <div>
-        <h2>Buy Token</h2>
-        <h3>USDC</h3>
-        <input
-          readOnly
-          type="text"
-          id="buy-amount"
-          value={(quotes && quotes[0]) ? formatUnits(quotes[0].buyAmount, 6) : ''}
-        />
-      </div>
-      {loading ? <p>Loading...</p> : quotes && quotes[0] && <button onClick={handleSwap}>Swap</button>}
-      {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-      {successMessage && <p style={{ color: 'green' }}>Success</p>}
+        <section className="bg-white max-h-full dark:bg-gray-900">
+            <div className="py-8 px-4 mx-auto max-h-full max-w-screen-xl text-center lg:py-16 lg:px-12">
+                <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">We invest in the LATAM&apos;s potential</h1>
+                <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">The first Starknet protocol to save your crypto while investing in LATAM&apos;s startups.</p>
+            </div>
+        </section>
+        <section className="bg-white dark:bg-gray-900">
+        <div className="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-6">
+            <dl className="grid max-w-screen-md gap-8 mx-auto text-gray-900 sm:grid-cols-4 dark:text-white">
+                <div className="flex flex-col items-center justify-center">
+                <input type="tel" id="phone" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Amount $" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required></input>
+                </div>
+                <div className="flex flex-col items-center justify-center">
+                    <button className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900" onClick={handleConnect}>Connect Wallet</button>
+                </div>
+                <div className="flex flex-col items-center justify-center">
+                <button className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900" onClick={handleConnect}>Connect Wallet</button>
+                </div>
+                <div className="flex flex-col items-center justify-center">
+                <button className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900" onClick={handleConnect}>Connect Wallet</button>
+                </div>
+            </dl>
+        </div>
+        </section>
+        <section className="bg-white dark:bg-gray-900">
+        <div className="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-6">
+            <dl className="grid max-w-screen-md gap-8 mx-auto text-gray-900 sm:grid-cols-4 dark:text-white">
+                <div className="flex flex-col items-center justify-center">
+                    <dt className="mb-2 text-3xl md:text-4xl font-extrabold">73M+</dt>
+                    <dd className="font-light text-gray-500 dark:text-gray-400">developers</dd>
+                </div>
+                <div className="flex flex-col items-center justify-center">
+                    <dt className="mb-2 text-3xl md:text-4xl font-extrabold">1B+</dt>
+                    <dd className="font-light text-gray-500 dark:text-gray-400">contributors</dd>
+                </div>
+                <div className="flex flex-col items-center justify-center">
+                    <dt className="mb-2 text-3xl md:text-4xl font-extrabold">4M+</dt>
+                    <dd className="font-light text-gray-500 dark:text-gray-400">organizations</dd>
+                </div>
+                <div className="flex flex-col items-center justify-center">
+                    <dt className="mb-2 text-3xl md:text-4xl font-extrabold">4M+</dt>
+                    <dd className="font-light text-gray-500 dark:text-gray-400">organizations</dd>
+                </div>
+            </dl>
+        </div>
+        </section>
     </div>
     
   );
