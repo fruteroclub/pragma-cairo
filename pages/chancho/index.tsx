@@ -66,7 +66,8 @@ function App() {
   }
 
   if (!account) {
-    return <section className="bg-white max-h-full dark:bg-gray-900">
+    return <div className='max-h-full'>
+    <section className="bg-white max-h-full dark:bg-gray-900">
     <div className="py-8 px-4 mx-auto max-h-full max-w-screen-xl text-center lg:py-16 lg:px-12">
         <a onClick={handleConnect} className="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-gray-700 bg-gray-100 rounded-full dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700" role="alert">
             <span className="text-xs bg-primary-600 rounded-full text-white px-4 py-1.5 mr-3">Chancho</span> <span className="text-sm font-medium">The easiest way to invest your crypto</span> 
@@ -80,11 +81,13 @@ function App() {
         </div>
     </div>
 </section>
+</div>
+
   }
 
   return (
     
-    <div>
+    <div className='max-h-full'>
         <section className="bg-white max-h-full dark:bg-gray-900">
             <div className="py-8 px-4 mx-auto max-h-full max-w-screen-xl text-center lg:py-16 lg:px-12">
                 <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">We invest in the LATAM&apos;s potential</h1>
@@ -95,17 +98,24 @@ function App() {
         <div className="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-6">
             <dl className="grid max-w-screen-md gap-8 mx-auto text-gray-900 sm:grid-cols-4 dark:text-white">
                 <div className="flex flex-col items-center justify-center">
-                <input type="tel" id="phone" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Amount $" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required></input>
+                <input type="tel" id="phone" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Monto" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required></input>
+                <dd className="font-light text-gray-500 dark:text-gray-400">Amount</dd>
+
+                </div>
+
+                <div className="flex flex-col items-center justify-center">
+                    <button className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900" onClick={handleConnect}>Ahorrar</button>
+                    <dd className="font-light text-gray-500 dark:text-gray-400">Stake</dd>
                 </div>
                 <div className="flex flex-col items-center justify-center">
-                    <button className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900" onClick={handleConnect}>Connect Wallet</button>
+                <button className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900" onClick={handleConnect}>Retirar</button>
+                <dd className="font-light text-gray-500 dark:text-gray-400">Widhraw</dd>
                 </div>
                 <div className="flex flex-col items-center justify-center">
-                <button className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900" onClick={handleConnect}>Connect Wallet</button>
+                <button className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900" onClick={handleConnect}>Reclamar recompensas</button>
+                <dd className="font-light text-gray-500 dark:text-gray-400">Claim</dd>
                 </div>
-                <div className="flex flex-col items-center justify-center">
-                <button className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900" onClick={handleConnect}>Connect Wallet</button>
-                </div>
+
             </dl>
         </div>
         </section>
